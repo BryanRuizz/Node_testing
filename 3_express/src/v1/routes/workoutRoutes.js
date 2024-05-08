@@ -5,8 +5,9 @@ const workoutController = require("../../controllers/workoutController");
 router
 .get("/",workoutController.getAllWorkouts)
 .get("/:workoutId",workoutController.getOneWorkout)
+
 .post("/",workoutController.createNewWorkout)
-.patch("/:workoutId",workoutController.updateWorkout)
+.patch("/",workoutController.updateWorkout)
 .delete("/:workoutId",workoutController.deleteOneWorkout)
 
 module.exports = router;
