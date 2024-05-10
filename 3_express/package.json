@@ -12,6 +12,9 @@
   "author": "bryan ruiz <bryanruiz2468@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "eslint": "^9.2.0",
+    "globals": "^15.2.0",
     "nodemon": "^3.1.0"
   },
   "dependencies": {
