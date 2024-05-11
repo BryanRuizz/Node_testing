@@ -8,7 +8,9 @@ const getAllWorkouts = (req, res) => {
 
 const getOneWorkout = (req, res) => {
     const id = req.params.workoutId;
-    if (!id) { return false }
+    if (!id) {
+        res.status(400).send({ status: "FAILED", data: { error: `One of the following keys is missing or is empty in request body: 'workoutId ':${id}` } });
+         }
     // console.log("mira esto es lo que estas solicitando ",id);
     const Workout = workoutService.getOneWorkout(id);
     res.status(201).send({ status: "OK", data: Workout })
