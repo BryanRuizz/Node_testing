@@ -1,16 +1,26 @@
 const workoutService = require("../services/workoutService");
 
+// const getAllWorkouts = (req, res) => {
+//     const allWorkouts = workoutService.getAllWorkouts();
+//     // console.log("miraa",workoutService.getAllWorkouts);
+//     res.send({ status: "OK", data: allWorkouts });
+// };
+
 const getAllWorkouts = (req, res) => {
-    const allWorkouts = workoutService.getAllWorkouts();
-    // console.log("miraa",workoutService.getAllWorkouts);
-    res.send({ status: "OK", data: allWorkouts });
+    try {
+        const allWorkouts = workoutService.getAllWorkouts();
+        res.send({ status: "OK", data: allWorkouts });
+    } catch (error) {
+
+    }
+
 };
 
 const getOneWorkout = (req, res) => {
     const id = req.params.workoutId;
     if (!id) {
         res.status(400).send({ status: "FAILED", data: { error: `One of the following keys is missing or is empty in request body: 'workoutId ':${id}` } });
-         }
+    }
     // console.log("mira esto es lo que estas solicitando ",id);
     const Workout = workoutService.getOneWorkout(id);
     res.status(201).send({ status: "OK", data: Workout })
