@@ -13,9 +13,23 @@ const getOneWorkout = (id) => {
 }
 
 
-const getAllWorkouts = () => {
-    const workouts = DB.workouts;
-    return workouts;
+const getAllWorkouts = (filterParams) => {
+    try {
+        let workouts = DB.workouts;
+        // console.log("mira mode",filterParams);
+        if(filterParams.mode){
+            let value = filterParams.mode.toLowerCase();
+            // console.log("dentro de if",filterParams.mode);
+            return DB.workouts.filter((workout)=>
+                workout.mode.toLowerCase().includes(value)
+            );
+        }
+
+        return workouts;
+    } catch (error) {
+        throw {status:500, message: error}
+    }
+
 }
 
 const createNewWorkout = (newWorkout) => {
