@@ -1,37 +1,39 @@
 const express = require("express");
-const apicache = require("apicache");
+// const apicache = require("apicache");
 
 const workoutController = require("../../controllers/workoutController");
 const RecordController = require("../../controllers/RecordController");
 
 
 const router = express.Router();
-const cache = apicache.middleware;
+// const cache = apicache.middleware;
+
 
 /**
-    * @openapi
-    * /api/v1/workouts:
-    *   get:
-    *     tags:
-    *       - Workouts
-    *     responses:
-    *       200:
-    *         description: OK
-    *         content:
-    *           application/json:
-    *             schema:
-    *               type: object
-    *               properties:
-    *                 status:
-    *                   type: string
-    *                   example: OK
-    *                 data:
-    *                   type: array 
-    *                   items: 
-    *                     type: object
-    */
+ * @openapi
+ * /api/v1/workouts:
+ *   get:
+ *     tags:
+ *       - Workouts
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     $ref: "#/components/schemas/Workout"
+ */
 router
-    .get("/", cache("2 minutes"), workoutController.getAllWorkouts)
+    .get("/", workoutController.getAllWorkouts)
+    // .get("/", cache("2 minutes"), workoutController.getAllWorkouts)
     .get("/:workoutId", workoutController.getOneWorkout)
     // this is a new route for records
     .get("/:workoutId/records", RecordController.getRecordForWorkout)

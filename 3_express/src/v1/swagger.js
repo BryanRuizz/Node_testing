@@ -5,13 +5,13 @@ const { version } = require("uuid");
 // metadata info about our api
 const options = {
     definition: {
-        openapi: "3.1.0",
+        openapi: "3.0.0",
         info: {
             title: "Crossfit WOD API",
             version: "1.0.0"
         },
     },
-    apis: ["src/v1/routes/workoutRoutes.js"],
+    apis: ["src/v1/routes/workoutRoutes.js", "./src/database/Workout.js"],
 }
 
 // Docs en json format
