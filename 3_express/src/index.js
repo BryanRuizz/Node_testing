@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
     res.send("<h1>Hello world</h1>");
 })
 
+
 //middlware implemantation, every req pass for there, http req that are in json format, 
 //this middle transform ur json to an js obj and attched. 
 app.use(express.json());
