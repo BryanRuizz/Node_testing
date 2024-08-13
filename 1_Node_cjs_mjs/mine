@@ -1,0 +1,52 @@
+
+    let ar1 = [];
+    let ar2 = [];
+
+    while (l1 !== null & l2 !== null) {
+        console.log("longest",l1.length);
+        if (l1 !== null) {
+            ar1.push(l1.val);
+            l1 = l1.next; 
+        }
+
+        if (l2 !== null) {
+            ar2.push(l2.val);
+            l2 = l2.next; 
+        }
+    }
+    // console.log("mira", ar1);
+    let av = ar1.reverse();
+    let av2 = ar2.reverse();
+    let f1 = av.join('');
+    let f2 = av2.join('');
+    let sum = parseInt(f1) + parseInt(f2);
+    let r = makemyar(sum.toString());
+    let res = arrayToLinkedList(r);
+
+    function makemyar(val) {
+        let array = [];
+        // console.log("exe", val.length);
+        for (let i = 0; i < val.length; i++) {
+
+            array.push(val[i]);
+        }
+
+        let res = array.reverse();
+        return res;
+    }
+
+    function arrayToLinkedList(nums) {
+        if (nums.length === 0) return null;
+
+        let head = new ListNode(nums[0]);
+        let current = head;
+
+        for (let i = 1; i < nums.length; i++) {
+            current.next = new ListNode(nums[i]);
+            current = current.next;
+        }
+
+        return head;
+    }
+
+    return res;
